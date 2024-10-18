@@ -1,0 +1,218 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="div-header">
+        <ion-icon name="arrow-back" class="icon-back" (click)="volver()"></ion-icon>
+        <strong>Lindas</strong>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-tabs>
+    <ion-tab tab="home">
+      <div id="home-page">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Home</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <!-- <div class="images">
+            <div class="container-img">
+              <div class="container-p">
+                <p class="p-nombre">Lautaro</p>
+                <p class="p-fecha">22 Nov. 2024</p>
+              </div>
+              <ion-img
+                class="img-feed"
+                src="assets/edificio1.jpg"
+              ></ion-img>
+              <div class="container-like">
+                <ion-icon name="heart"></ion-icon>
+                <p>10</p>
+              </div>
+            </div>
+
+            
+            <div class="container-img">
+              <div class="container-p">
+                <p class="p-nombre">Martin</p>
+                <p class="p-fecha">20 Oct. 2024</p>
+              </div>
+              <ion-img
+                src="assets/edificio2.jpg"
+              ></ion-img>
+              <div class="container-like">
+                <ion-icon name="heart-outline"></ion-icon>
+                <p>22</p>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="images">
+
+            <div class="container-img" *ngFor="let image of images; let i = index">
+              <div class="container-p">
+                <p class="p-nombre">{{image.userName}}</p>
+                <p class="p-fecha">{{image.timestamp | timestampFormat}}</p>
+              </div>
+              <ion-img
+                class="img-feed"
+                [src]="image.url"
+              ></ion-img>
+              <div class="container-like">
+                <ion-icon [name]="image.liked ? 'heart' : 'heart-outline'" (click)="toggleLike(image)"></ion-icon>
+                <p>{{image.likesCount}}</p>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+        </ion-content>
+      </div>
+    </ion-tab>
+    <ion-tab tab="subir">
+      <div id="subir-page">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Subir</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="div-tomar-foto">
+          <!-- <div class="div-tomar-foto"> -->
+            <div class="div-dos">
+              <ion-button color="light" fill="outline" (click)="takePhoto()" class="btn-tomar-foto">
+                <ion-icon name="add"></ion-icon>
+                <ion-icon name="camera"></ion-icon>
+              </ion-button>
+            </div>
+
+            <div class="div-imgs-selec">
+                <!-- <ion-img
+                  alt="Imagen seleccionada"
+                  src="assets/edificio1.jpg"
+                  class="img-selec"  
+                ></ion-img>
+                <ion-button class="btn-eliminar" color="danger" fill="outline">Eliminar</ion-button>
+                
+                <ion-img
+                  alt="Imagen seleccionada"
+                  src="assets/edificio1.jpg"
+                  class="img-selec"  
+                ></ion-img>
+                <ion-button class="btn-eliminar" color="danger" fill="outline">Eliminar</ion-button>
+                
+                <ion-img
+                  alt="Imagen seleccionada"
+                  src="assets/edificio1.jpg"
+                  class="img-selec"                  
+                ></ion-img>
+                <ion-button class="btn-eliminar" color="danger" fill="outline">Eliminar</ion-button> -->
+
+                
+                <!-- <div *ngIf="selectedImages.length > 0"> -->
+                  @if (selectedImages.length > 0) {
+                    <div *ngFor="let image of selectedImages; let i = index">
+                      <ion-img
+                        alt="Imagen seleccionada"
+                        [src]="image"
+                        class="img-selec"
+                      ></ion-img>
+  
+                      <ion-button class="btn-eliminar" color="danger" fill="outline" (click)="removeImage(i)">Eliminar</ion-button>
+                    </div>
+                  }
+                <!-- </div> -->
+
+                <ion-button (click)="confirmUpload()" class="btn-subir">Subir imágenes</ion-button>
+          </div>
+
+        </ion-content>
+      </div>
+    </ion-tab>
+    <ion-tab tab="graficos">
+      <div id="graficos-page">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Graficos</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="fullscreen" style="--ion-background-color: linear-gradient(to bottom, #c37b10, #efceb4);">
+  
+          <div class="main-screen">
+            <div class="canvas">
+              <canvas id="likesChart"></canvas>
+            </div>
+            
+            <!-- Muestra la imagen seleccionada debajo del gráfico -->
+            <div *ngIf="selectedImage" style="margin-bottom: 50px;">
+              <h3 style="color: white;">Imagen:</h3>
+              <img [src]="selectedImage" alt="Imagen seleccionada" width="300">
+            </div>
+          
+        
+          </div>
+        
+        </ion-content>
+      </div>
+    </ion-tab>
+    <ion-tab tab="mis-fotos">
+      <div id="mis-fotos-page">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Mis fotos</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          
+
+          <div class="images">
+
+            <div class="container-img" *ngFor="let image of imagesUser; let i = index">
+              <div class="container-p">
+                <p class="p-nombre">{{image.userName}}</p>
+                <p class="p-fecha">{{image.timestamp | timestampFormat}}</p>
+              </div>
+              <ion-img
+                class="img-feed"
+                [src]="image.url"
+              ></ion-img>
+              <div class="container-like">
+                <ion-icon [name]="image.liked ? 'heart' : 'heart-outline'" (click)="toggleLike(image)"></ion-icon>
+                <p>{{image.likesCount}}</p>
+              </div>
+            </div>
+
+          </div>
+
+
+        </ion-content>
+      </div>
+    </ion-tab>
+  
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        Inicio
+      </ion-tab-button>
+      <ion-tab-button tab="subir">
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        Subir
+      </ion-tab-button>
+      <ion-tab-button tab="graficos" (click)="loadLikesData()">
+        <ion-icon name="analytics-outline"></ion-icon>
+        Graficos
+      </ion-tab-button>
+      <ion-tab-button tab="mis-fotos" (click)="loadImagesUser()">
+        <ion-icon name="image-outline"></ion-icon>
+        Mis fotos
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

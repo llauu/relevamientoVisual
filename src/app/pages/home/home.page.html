@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <strong>Relevamiento Visual</strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div class="div-botones">
+      <ion-button color="warning" size="large" expand="block" fill="outline" class="boton-sala a4" (click)="ingresarSeccion('Lindas')" > 
+        <img src="assets/img/lindas.png" alt="Cosas lindas">
+      </ion-button>
+      <ion-button color="light" size="large" expand="block" fill="outline" class="boton-sala b4" (click)="ingresarSeccion('Feas')"> 
+        <img src="assets/img/feas.png" id="aaa" alt="Cosas feas">
+      </ion-button>
+    </div>
+
+    <ion-button color="danger" size="large" expand="block" fill="outline" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+  </div>
+</ion-content>

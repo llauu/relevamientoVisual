@@ -1,0 +1,204 @@
+* {
+  color: white;
+}
+
+ion-toolbar {
+  --background: #1c1c1c;
+}
+
+ion-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0px;
+  background-color: #1c1c1c;
+  color: white;
+}
+
+ion-content {
+  --background: #2e2e2e;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.boton-sala {
+  margin: 10px;
+  width: 90vw;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #cacaca;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-tab-bar {
+  --background: #000; // Fondo negro
+  --color: #ffffff;   // Color del texto en la pestaña inactiva (blanco)
+  --color-selected: #ff6347; // Color del texto en la pestaña activa (puedes ajustarlo)
+}
+ 
+// TABS HOME
+
+#home-page {
+  height: 89vh;
+}
+
+#subir-page {
+  height: 89vh;
+}
+
+#graficos-page {
+  height: 89vh;
+}
+
+#mis-fotos-page {
+  height: 89vh;
+}
+
+.div-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.icon-back {
+  width: 7vw;
+}
+
+.div-header strong {
+  width: 100vw;
+}
+
+
+.images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
+}
+
+.container-img {
+  margin-bottom: 5vh;
+  width: 100vw;
+  height: 55vh;
+  overflow: hidden; // Para asegurarte de que la imagen no sobresalga del contenedor
+  // background-color: #ededed;
+}
+
+.container-p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-nombre, .p-fecha {
+  margin: 5px 4px;
+  font-weight: 500;
+}
+
+.container-like {
+  display: flex;
+  padding: 5px 4px;
+  font-size: 25px;
+}
+
+.container-like ion-icon {
+  margin-top: 3px;
+}
+
+.container-like p {
+  margin: 0;
+  margin-left: 3px;
+}
+
+.container-img ion-img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; // Esto asegura que la imagen cubra todo el contenedor sin deformarse
+}
+
+
+ion-tabs {
+  height: 100vh;
+}
+
+
+// TOMAR FOTO 
+.div-tomar-foto {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  background-color: blue;
+  margin-top: 5vh;
+}
+
+
+.btn-tomar-foto {
+  height: 100px;
+  width: 90%;
+  font-size: 37px;
+  margin-bottom: 40px;
+}
+
+.div-dos {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 3vh;
+}
+
+.div-imgs-selec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.img-selec {
+  width: 90vw;
+  height: 45vh;
+  object-fit: cover;
+}
+
+.btn-eliminar {
+  margin-bottom: 50px;
+  width: 90vw;
+  font-size: 20px;
+}
+
+.btn-subir {
+  margin-bottom: 50px;
+  width: 90vw;
+  height: 10vh;
+  font-size: 25px;
+}
+
+
+
+canvas {
+  width: 96%;
+  max-height: 100%;
+}
+
+.main-screen {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
